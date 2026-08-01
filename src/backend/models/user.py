@@ -32,5 +32,10 @@ class User(db.Model):
 
     role = db.relationship("Role", back_populates="users")
 
+    transactions = db.relationship(
+        "IssueTransaction",
+        back_populates="user",
+        cascade="all, delete-orphan"
+    )
     def __repr__(self):
         return f"<User {self.email}>"

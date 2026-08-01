@@ -5,11 +5,12 @@ from config import Config
 from database import db, migrate
 
 # Import models so Flask-Migrate can detect them
-from models import Role, User
-
+from models import Role, User, Author, Category,Book,BookCopy
 # Import Blueprints
 from routes.auth_routes import auth_bp
-
+from routes.book_routes import book_bp
+from routes.book_copy_routes import book_copy_bp
+from routes.issue_transaction_routes import issue_transaction_bp
 from flask_jwt_extended import JWTManager
 
 
@@ -30,6 +31,9 @@ def create_app():
 
     # Register Blueprints
     app.register_blueprint(auth_bp)
+    app.register_blueprint(book_bp)
+    app.register_blueprint(book_copy_bp)
+    app.register_blueprint(issue_transaction_bp)
 
     @app.route("/")
     def home():
