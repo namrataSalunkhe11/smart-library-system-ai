@@ -2,7 +2,8 @@ from werkzeug.security import generate_password_hash
 
 from database import db
 from models.user import User
-
+from werkzeug.security import check_password_hash
+from flask_jwt_extended import create_access_token
 
 def register_user(data):
     """
@@ -38,3 +39,42 @@ def register_user(data):
         "success": True,
         "message": "User registered successfully."
     }, 201
+
+def login_user(data):
+    """
+    Authenticate a user and generate a JWT token.
+    """
+
+    user = User.query.filter_by(email=data["email"]).first()
+
+    if not user:
+        return {
+            "success": False,
+            "message": "Invalid email or password."
+        }, 401
+
+    if not check_password_hash(user.password_hash, data["password"]):
+        return {
+            "success": False,
+            "message": "Invalid email or password."
+        }, 401
+
+    access_token = create_access_token(
+        identity=str(user.user_id),
+        additional_claims={
+            "role_id": user.role_id
+        }
+    )
+
+    return {
+        "success": True,
+        "message": "Login successful.",
+        "access_token": access_token,
+        "user": {
+            "user_id": user.user_id,
+            "first_name": user.first_name,
+            "last_name": user.last_name,
+            "email": user.email,
+            "role_id": user.role_id
+        }
+    }, 200
