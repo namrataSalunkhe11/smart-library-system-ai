@@ -2,140 +2,193 @@
 
 ## Project Overview
 
-The **Smart Library System with AI Recommendations** is a web-based library management application designed for educational institutions. It automates routine library operations while providing students with an intelligent book recommendation system based on borrowing history and book similarity.
+Smart Library System with AI Recommendations is a digital library management platform designed to automate traditional library operations and provide intelligent book recommendations.
 
-The project is being developed as a **Third Year B.Sc. Computer Science Mini Project** under the **University of Mumbai** curriculum using professional Software Development Life Cycle (SDLC) practices.
-
----
-
-## Problem Statement
-
-Many educational institutions continue to rely on manual or outdated library management systems. Students often cannot check book availability before visiting the library, reserve books online, or receive personalized book recommendations. Librarians spend significant time managing issue/return records, calculating fines, and handling reservations manually.
-
-This project addresses these challenges through automation and Artificial Intelligence.
+The system helps students, librarians, and administrators manage books, users, transactions, reservations, and fine records efficiently while improving user experience through AI-powered recommendations.
 
 ---
 
-## Objectives
+# ✨ Features
 
-* Automate library operations.
-* Provide real-time book availability.
-* Enable online book reservation.
-* Maintain borrowing history.
-* Automate fine calculation.
-* Provide AI-powered book recommendations.
-* Improve the overall library experience for students and librarians.
+## 👤 User Management
 
----
+* User registration and authentication
+* Role-based access control
+* User profile management
 
-## Technology Stack
+## 📖 Book Management
 
-| Layer           | Technology                  |
-| --------------- | --------------------------- |
-| Frontend        | React.js (Vite)             |
-| Backend         | Python (Flask)              |
-| Database        | MySQL 8                     |
-| ORM             | SQLAlchemy                  |
-| Authentication  | JWT                         |
-| AI              | scikit-learn, Pandas, NumPy |
-| Version Control | Git & GitHub                |
-| Documentation   | Markdown                    |
+* Add and update books
+* Search books easily
+* Manage library catalogue
 
----
+## 🔄 Transaction Management
 
-## System Modules
+* Book issue management
+* Book return processing
+* Transaction history tracking
 
-### Student
+## 📌 Reservation System
 
-* Register and Login
-* Search Books
-* Reserve Books
-* View Borrowing History
-* View Fine Details
-* Receive AI Book Recommendations
+* Reserve unavailable books
+* Manage reservation requests
 
-### Librarian
+## 💰 Fine Management
 
-* Manage Books
-* Issue and Return Books
-* Approve Reservations
-* Manage Categories
-* Calculate Fines
-* Generate Reports
+* Calculate overdue fines
+* Maintain fine records
 
-### Administrator
+## 🤖 AI Recommendation System
 
-* Manage Students
-* Manage Librarians
-* View Reports
-* Configure System Settings
+* Analyze user activity
+* Generate personalized book suggestions
+* Improve book discovery
 
 ---
 
-## AI Recommendation Module
+# 🏗️ System Architecture
 
-The AI engine will recommend books using:
+```
+User Interface
 
-* Content-Based Recommendation
-* Borrowing History Analysis
+      ↓
 
-Future versions may include collaborative filtering and advanced recommendation models.
+Backend API Server
 
----
+      ↓
 
-## Project Status
+Database
 
-**Current Phase:** Requirements Engineering
+      ↓
 
-Completed:
-
-* Project Foundation
-* Project Charter
-* Project Handbook
-* Vision Document
-* Product Backlog
-
-Upcoming:
-
-* Software Requirements Specification (SRS)
-* System Design
-* Database Design
-* Development
-* Testing
-* Deployment
-
----
-
-## Repository Structure
-
-```text
-backend/
-frontend/
-database/
-docs/
-assets/
-scripts/
-.github/
+AI Recommendation Module
 ```
 
 ---
 
-## Development Methodology
+# 🛠️ Technology Stack
 
-The project follows an Agile Software Development Life Cycle (SDLC) with incremental development, Git version control, and continuous documentation.
-
----
-
-## Author
-
-**Namrata Salunkhe**
-
-B.Sc. Computer Science (Third Year)
-
-University of Mumbai
+| Category        | Technology               |
+| --------------- | ------------------------ |
+| Frontend        | HTML, CSS, JavaScript    |
+| Backend         | Python Framework         |
+| Database        | MySQL                    |
+| API Testing     | Postman                  |
+| Version Control | Git & GitHub             |
+| AI              | Recommendation Algorithm |
 
 ---
 
-## License
+# 📂 Project Structure
 
-This project is developed for academic purposes as part of the B.Sc. Computer Science curriculum.
+```
+smart-library-system-ai
+
+├── docs
+│   ├── 00_Project_Handbook
+│   ├── 01_Project_Initiation
+│   ├── 02_Product_Discovery
+│   ├── 03_Requirements
+│   ├── 04_System_Design
+│   ├── 05_Database_Design
+│   ├── 06_API_Documentation
+│   ├── 07_Testing
+│   ├── 08_Deployment
+│   ├── 09_Project_Report
+│   └── 10_Presentation
+│
+├── src
+├── database
+├── requirements.txt
+└── README.md
+```
+
+---
+
+# ⚙️ Installation & Setup
+
+## Clone Repository
+
+```bash
+git clone <repository-url>
+```
+
+## Navigate to Project
+
+```bash
+cd smart-library-system-ai
+```
+
+## Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+## Configure Database
+
+* Install MySQL
+* Create database
+* Update configuration settings
+
+## Run Application
+
+```bash
+python app.py
+```
+
+---
+
+# 🧪 Testing
+
+Testing documentation includes:
+
+* Test Plan
+* Test Cases
+* Bug Report Template
+
+Testing covers:
+
+* Authentication
+* Book Management
+* Transactions
+* Reservations
+* AI Recommendations
+
+---
+
+# 🚀 Deployment
+
+Deployment documentation includes:
+
+* Environment Setup
+* Deployment Plan
+* Deployment Guide
+
+---
+
+# 🔮 Future Enhancements
+
+* Mobile application support
+* Voice-based search
+* Cloud deployment
+* Advanced AI recommendation models
+* Digital library integration
+
+---
+
+# 📄 Documentation
+
+Complete project documentation is available in:
+
+```
+docs/
+```
+
+---
+
+# 👩‍💻 Project
+
+**Smart Library System with AI Recommendations**
+
+Developed as a Mini Project.
