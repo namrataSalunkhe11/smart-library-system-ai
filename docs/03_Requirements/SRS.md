@@ -1213,3 +1213,132 @@ Cosine Similarity Calculation
       ↓
 Recommended Books
 ```
+# 3.9 Reports and Dashboard System (FR-009)
+
+## Feature ID
+
+FR-009
+
+## Feature Name
+
+Library Analytics and Dashboard Management
+
+---
+
+## Description
+
+The system shall provide role-based dashboards and reports to help users monitor library activities.
+
+The dashboard shall provide different information according to user roles, including student activities, book statistics, transaction summaries, and system usage reports.
+
+---
+
+## Actors
+
+* Student
+* Librarian
+* Administrator
+
+---
+
+## Preconditions
+
+* User must be authenticated.
+* User must have appropriate role permissions.
+* Required system data must be available.
+
+---
+
+## Main Flow
+
+### Student Dashboard
+
+1. Student logs into the system.
+2. System displays personalized dashboard.
+3. Dashboard shows:
+
+* Current issued books
+* Due dates
+* Fine details
+* Reservations
+* AI recommendations
+* Borrowing history summary
+
+---
+
+### Librarian Dashboard
+
+1. Librarian accesses dashboard.
+2. System displays library operation statistics.
+
+Information displayed:
+
+* Total books
+* Available books
+* Issued books
+* Pending reservations
+* Overdue books
+* Fine records
+
+---
+
+### Administrator Dashboard
+
+1. Administrator accesses system dashboard.
+2. System displays overall analytics.
+
+Information displayed:
+
+* Total users
+* User activity
+* Book statistics
+* Transaction reports
+* System usage trends
+
+---
+
+## Reports Generated
+
+The system shall support:
+
+* Book inventory reports
+* Issue and return reports
+* Overdue book reports
+* Fine reports
+* User activity reports
+* Popular book reports
+
+---
+
+## Alternative Flow
+
+### No Data Available
+
+1. User requests a report.
+2. System finds insufficient records.
+3. System displays an appropriate message.
+
+---
+
+### Unauthorized Report Access
+
+1. User requests restricted information.
+2. System validates permissions.
+3. Access is denied if permission is insufficient.
+
+---
+
+## Postconditions
+
+* Users receive relevant dashboard information.
+* Reports are generated accurately.
+* Library activities can be monitored effectively.
+
+---
+
+## Business Rules
+
+* Dashboard information must be role-specific.
+* Sensitive information must only be visible to authorized users.
+* Reports must be generated using accurate database records.
+* Historical records must be maintained for analysis.
