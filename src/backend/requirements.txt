@@ -1,0 +1,9 @@
+Flask
+Flask-CORS
+Flask-JWT-Extended
+Flask-SQLAlchemy
+Flask-Migrate
+mysql-connector-python
+python-dotenv
+pandas
+scikit-learn
