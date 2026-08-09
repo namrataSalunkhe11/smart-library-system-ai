@@ -1,4 +1,6 @@
 from flask import Blueprint, request, jsonify
+from flask_jwt_extended import jwt_required, get_jwt
+from constants.roles import ADMIN, LIBRARIAN
 
 from services.issue_transaction_service import (
     issue_book,
@@ -13,8 +15,17 @@ issue_transaction_bp = Blueprint(
 
 
 @issue_transaction_bp.route("", methods=["POST"])
+@jwt_required()
 def issue():
 
+    claims = get_jwt()
+
+    if claims.get("role") not in [ADMIN, LIBRARIAN]:
+        return jsonify({
+            "success": False,
+            "message": "Only Admin and Librarian can issue books."
+        }), 403
+    
     data = request.get_json()
 
     if not data:

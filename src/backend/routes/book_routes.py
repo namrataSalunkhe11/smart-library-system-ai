@@ -5,7 +5,8 @@ from services.book_service import (
     get_all_books,
     search_books,
     update_book,
-    delete_book
+    delete_book,
+    create_books_bulk
 )
 
 book_bp = Blueprint(
@@ -89,5 +90,20 @@ def edit_book(book_id):
 def remove_book(book_id):
 
     response, status_code = delete_book(book_id)
+
+    return jsonify(response), status_code
+
+@book_bp.route("/bulk", methods=["POST"])
+def add_books_bulk():
+
+    data = request.get_json()
+
+    if not isinstance(data, list):
+        return jsonify({
+            "success": False,
+            "message": "Request body must be a JSON array."
+        }), 400
+
+    response, status_code = create_books_bulk(data)
 
     return jsonify(response), status_code

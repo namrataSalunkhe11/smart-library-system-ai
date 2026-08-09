@@ -2,7 +2,7 @@ from database import db
 from models.book import Book
 from models.author import Author
 from models.category import Category
-
+from sqlalchemy.exc import IntegrityError
 
 def create_book(data):
     """
@@ -178,3 +178,74 @@ def delete_book(book_id):
         "success": True,
         "message": "Book deleted successfully."
     }, 200
+
+
+
+
+def create_books_bulk(books_data):
+    """
+    Create multiple books in a single request.
+    """
+
+    inserted = 0
+    skipped = 0
+    duplicates = []
+
+    for data in books_data:
+
+        # Check duplicate ISBN
+        existing_book = Book.query.filter_by(
+            isbn=data["isbn"]
+        ).first()
+
+        if existing_book:
+            skipped += 1
+            duplicates.append(data["isbn"])
+            continue
+
+        # Validate Author
+        author = Author.query.get(data["author_id"])
+
+        if not author:
+            skipped += 1
+            continue
+
+        # Validate Category
+        category = Category.query.get(data["category_id"])
+
+        if not category:
+            skipped += 1
+            continue
+
+        book = Book(
+            title=data["title"],
+            isbn=data["isbn"],
+            author_id=data["author_id"],
+            category_id=data["category_id"],
+            publisher=data.get("publisher"),
+            publication_year=data.get("publication_year"),
+            edition=data.get("edition"),
+            language=data.get("language"),
+            description=data.get("description")
+        )
+
+        db.session.add(book)
+        inserted += 1
+
+    try:
+        db.session.commit()
+    except IntegrityError:
+        db.session.rollback()
+
+        return {
+            "success": False,
+            "message": "Bulk insert failed."
+        }, 500
+
+    return {
+        "success": True,
+        "message": f"{inserted} books inserted successfully.",
+        "inserted": inserted,
+        "skipped": skipped,
+        "duplicates": duplicates
+    }, 201

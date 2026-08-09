@@ -12,6 +12,9 @@ from routes.book_routes import book_bp
 from routes.book_copy_routes import book_copy_bp
 from routes.issue_transaction_routes import issue_transaction_bp
 from flask_jwt_extended import JWTManager
+from routes.recommendation_routes import recommendation_bp
+from routes.category_routes import category_bp
+from routes.author_routes import author_bp
 
 
 def create_app():
@@ -34,6 +37,10 @@ def create_app():
     app.register_blueprint(book_bp)
     app.register_blueprint(book_copy_bp)
     app.register_blueprint(issue_transaction_bp)
+    app.register_blueprint(recommendation_bp)
+    app.register_blueprint(category_bp)
+    app.register_blueprint(author_bp)
+    
 
     @app.route("/")
     def home():
