@@ -1,0 +1,451 @@
+/* =========================================
+   LIBRARY MANAGEMENT PAGE
+   ========================================= */
+
+.library-management-page {
+  min-height: calc(100vh - 80px);
+  background: #f8fafc;
+  padding: 30px 40px 50px;
+  box-sizing: border-box;
+}
+
+/* =========================================
+   PAGE TITLE
+   ========================================= */
+
+.management-title {
+  margin-bottom: 25px;
+}
+
+.management-title h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #1f2937;
+}
+
+.management-title p {
+  margin: 7px 0 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* =========================================
+   MESSAGES
+   ========================================= */
+
+.management-message,
+.management-error {
+  padding: 13px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.management-message {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.management-error {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+/* =========================================
+   MANAGEMENT SECTION
+   ========================================= */
+
+.management-section {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* =========================================
+   SECTION HEADER
+   ========================================= */
+
+.management-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 22px;
+}
+
+.management-section-header h2 {
+  margin: 0;
+  font-size: 21px;
+  color: #1f2937;
+}
+
+.management-section-header p {
+  margin: 6px 0 0;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.management-count {
+  background: #eff6ff;
+  color: #2563eb;
+  border: 1px solid #bfdbfe;
+  padding: 7px 13px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* =========================================
+   FORM CARD
+   ========================================= */
+
+.management-form-card {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 22px;
+  margin-bottom: 25px;
+}
+
+.management-form-card h3 {
+  margin: 0 0 18px;
+  color: #374151;
+  font-size: 17px;
+}
+
+/* =========================================
+   BOOK FORM
+   ========================================= */
+
+.management-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-field-full {
+  grid-column: 1 / -1;
+}
+
+.form-field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  background: white;
+  color: #1f2937;
+  font-size: 14px;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-field textarea {
+  resize: vertical;
+}
+
+/* =========================================
+   COPY FORM
+   ========================================= */
+
+.management-copy-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 18px;
+  align-items: end;
+}
+
+/* =========================================
+   FORM ACTIONS
+   ========================================= */
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.management-primary-btn {
+  border: none;
+  padding: 10px 18px;
+  border-radius: 7px;
+  background: #2563eb;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+  white-space: nowrap;
+}
+
+.management-primary-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.management-primary-btn:disabled {
+  background: #93c5fd;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* =========================================
+   TABLE
+   ========================================= */
+
+.management-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 9px;
+}
+
+.management-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+.management-table thead {
+  background: #f1f5f9;
+}
+
+.management-table th {
+  padding: 13px 14px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  color: #475569;
+  border-bottom: 1px solid #e5e7eb;
+  white-space: nowrap;
+}
+
+.management-table td {
+  padding: 13px 14px;
+  font-size: 13px;
+  color: #374151;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.management-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.management-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* =========================================
+   DELETE BUTTON
+   ========================================= */
+
+.management-delete-btn {
+  border: none;
+  padding: 7px 12px;
+  border-radius: 6px;
+  background: #fee2e2;
+  color: #b91c1c;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.management-delete-btn:hover {
+  background: #fecaca;
+}
+
+.management-delete-btn:disabled {
+  background: #f3f4f6;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* =========================================
+   COPY STATUS
+   ========================================= */
+
+.copy-status-available,
+.copy-status-issued {
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 15px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.copy-status-available {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.copy-status-issued {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+/* =========================================
+   EMPTY STATE
+   ========================================= */
+
+.management-empty {
+  text-align: center !important;
+  padding: 30px !important;
+  color: #6b7280 !important;
+}
+
+/* =========================================
+   LOADING
+   ========================================= */
+
+.management-loading {
+  text-align: center;
+  padding: 80px 20px;
+  color: #6b7280;
+  font-size: 15px;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 900px) {
+  .library-management-page {
+    padding: 25px 20px 40px;
+  }
+
+  .management-form {
+    grid-template-columns: 1fr;
+  }
+
+  .form-field-full {
+    grid-column: auto;
+  }
+
+  .management-copy-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .library-management-page {
+    padding: 20px 15px 30px;
+  }
+
+  .management-section {
+    padding: 18px;
+  }
+
+  .management-title h1 {
+    font-size: 23px;
+  }
+
+  .management-section-header {
+    flex-direction: column;
+  }
+
+  .management-count {
+    align-self: flex-start;
+  }
+
+  .management-form-card {
+    padding: 16px;
+  }
+}
+/* =========================================
+   DRAWER SECTIONS
+   ========================================= */
+
+.drawer-section {
+  overflow: hidden;
+}
+
+.drawer-header {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  cursor: pointer;
+}
+
+.drawer-header:hover {
+  opacity: 0.85;
+}
+
+.drawer-header h2 {
+  margin: 0;
+}
+
+.drawer-header p {
+  margin: 6px 0 0;
+}
+
+.drawer-header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.drawer-icon {
+  min-width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: #eef2ff;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.drawer-content {
+  margin-top: 22px;
+  padding-top: 22px;
+  border-top: 1px solid #e5e7eb;
+  animation: drawerOpen 0.2s ease;
+}
+
+@keyframes drawerOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

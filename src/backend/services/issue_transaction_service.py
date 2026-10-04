@@ -61,8 +61,13 @@ def issue_book(data):
 
 def return_book(copy_id):
     """
-    Return an issued book copy and calculate fine.
-    Fine: ₹10 per day after due date.
+    Check book return and calculate fine.
+
+    If there is no fine:
+        Book is returned immediately.
+
+    If there is a fine:
+        Book remains ISSUED until the fine is paid.
     """
 
     transaction = IssueTransaction.query.filter_by(
@@ -78,10 +83,13 @@ def return_book(copy_id):
 
     copy = BookCopy.query.get(copy_id)
 
-    return_date = datetime.utcnow()
+    if not copy:
+        return {
+            "success": False,
+            "message": "Book copy not found."
+        }, 404
 
-    transaction.return_date = return_date
-    transaction.status = "RETURNED"
+    return_date = datetime.utcnow()
 
     # Calculate fine
     fine = 0
@@ -94,19 +102,48 @@ def return_book(copy_id):
 
     transaction.fine_amount = fine
 
-    copy.status = "AVAILABLE"
+    # =========================================
+    # NO FINE
+    # =========================================
+
+    if fine <= 0:
+
+        transaction.return_date = return_date
+        transaction.status = "RETURNED"
+        transaction.fine_paid = False
+
+        copy.status = "AVAILABLE"
+
+        db.session.commit()
+
+        return {
+            "success": True,
+            "returned": True,
+            "fine_required": False,
+            "message": "Book returned successfully.",
+            "fine_amount": 0
+        }, 200
+
+    # =========================================
+    # FINE EXISTS
+    # =========================================
 
     db.session.commit()
 
     return {
         "success": True,
-        "message": "Book returned successfully.",
+        "returned": False,
+        "fine_required": True,
+        "message": "Fine payment is required before returning the book.",
+        "transaction_id": transaction.transaction_id,
+        "copy_id": copy.copy_id,
         "fine_amount": float(fine)
     }, 200
 
+
 def pay_fine(transaction_id):
     """
-    Mark a fine as paid.
+    Pay the fine and complete the book return.
     """
 
     transaction = IssueTransaction.query.get(transaction_id)
@@ -129,12 +166,29 @@ def pay_fine(transaction_id):
             "message": "Fine has already been paid."
         }, 400
 
+    copy = BookCopy.query.get(transaction.copy_id)
+
+    if not copy:
+        return {
+            "success": False,
+            "message": "Book copy not found."
+        }, 404
+
+    # Mark fine as paid
     transaction.fine_paid = True
+
+    # Complete return
+    transaction.return_date = datetime.utcnow()
+    transaction.status = "RETURNED"
+
+    copy.status = "AVAILABLE"
+
     db.session.commit()
 
     return {
         "success": True,
-        "message": "Fine paid successfully.",
+        "returned": True,
+        "message": "Fine paid and book returned successfully.",
         "fine_amount": float(transaction.fine_amount)
     }, 200
 

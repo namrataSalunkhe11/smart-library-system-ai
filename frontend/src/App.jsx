@@ -8,13 +8,15 @@ import Recommendations from "./pages/Recommendations";
 import Reservations from "./pages/Reservations";
 import AdminDashboard from "./pages/AdminDashboard";
 import LibrarianDashboard from "./pages/LibrarianDashboard";
+import Register from "./pages/Register";
+import LibraryManagement from "./pages/LibraryManagement";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-
+        <Route path="/register" element={<Register />} />
         <Route
           path="/dashboard"
           element={
@@ -68,6 +70,14 @@ function App() {
           element={
             <ProtectedRoute allowedRoles={[2]}>
               <LibrarianDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/library-management"
+          element={
+             <ProtectedRoute allowedRoles={[1, 2]}>
+              <LibraryManagement />
             </ProtectedRoute>
           }
         />

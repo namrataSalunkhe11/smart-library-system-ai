@@ -1,4 +1,4 @@
-
+import CommonHeader from "../components/CommonHeader";
 import { useEffect, useState } from "react";
 import API_BASE_URL from "../services/api";
 import "./Borrowings.css";
@@ -50,10 +50,13 @@ function Borrowings() {
 
   if (loading) {
     return (
+      <>
+      <CommonHeader />
       <div className="borrowings-page">
         <h1>📖 My Borrowings</h1>
         <p>Loading borrowing history...</p>
       </div>
+      </>
     );
   }
 
@@ -67,17 +70,10 @@ function Borrowings() {
   }
 
   return (
+    <>
+    <CommonHeader />
     <div className="borrowings-page">
-      <div className="borrowings-header">
-        <div>
-          <h1>📖 My Borrowings</h1>
-          <p>View your current and previous borrowed books.</p>
-        </div>
-
-        <div className="borrowing-count">
-          {borrowings.length} Records
-        </div>
-      </div>
+      
 
       {borrowings.length === 0 ? (
         <div className="no-borrowings">
@@ -142,6 +138,7 @@ function Borrowings() {
         </div>
       )}
     </div>
+    </>
   );
 }
 

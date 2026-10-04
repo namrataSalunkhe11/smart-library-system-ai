@@ -1,3 +1,4 @@
+import CommonHeader from "../components/CommonHeader";
 import { useNavigate } from "react-router-dom";
 import "./Dashboard.css";
 
@@ -10,17 +11,10 @@ function Dashboard() {
         navigate("/");
     };
   return (
+    <>
+    <CommonHeader />
     <div className="dashboard">
-      <header className="dashboard-header">
-        <div>
-          <h1>Smart Library</h1>
-          <p>Library Management System with AI Recommendations</p>
-        </div>
-
-        <button className="logout-btn" onClick={handleLogout}>
-            Logout
-        </button>
-      </header>
+      
 
       <main className="dashboard-content">
         <h2>Welcome to Smart Library</h2>
@@ -60,6 +54,7 @@ function Dashboard() {
         </div>
       </main>
     </div>
+    </>
   );
 }
 

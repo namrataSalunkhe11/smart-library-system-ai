@@ -15,14 +15,25 @@ class User(db.Model):
     first_name = db.Column(db.String(100), nullable=False)
     last_name = db.Column(db.String(100), nullable=False)
 
-    email = db.Column(db.String(150), unique=True, nullable=False)
+    username = db.Column(
+        db.String(150),
+        unique=True,
+        nullable=False
+    )
+
+    email = db.Column(
+        db.String(150),
+        unique=True,
+        nullable=False
+    )
     password_hash = db.Column(db.String(255), nullable=False)
 
     phone = db.Column(db.String(20))
 
     status = db.Column(
-        db.Enum("ACTIVE", "INACTIVE"),
-        default="ACTIVE"
+        db.Enum("PENDING", "ACTIVE", "REJECTED"),
+        default="ACTIVE",
+        nullable=False
     )
 
     created_at = db.Column(

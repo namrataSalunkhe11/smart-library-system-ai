@@ -26,6 +26,7 @@ from routes.recommendation_routes import recommendation_bp
 from routes.category_routes import category_bp
 from routes.author_routes import author_bp
 from routes.reservation_routes import reservation_bp
+from routes.admin_routes import admin_bp
 
 
 def create_app():
@@ -52,6 +53,7 @@ def create_app():
     app.register_blueprint(category_bp)
     app.register_blueprint(author_bp)
     app.register_blueprint(reservation_bp)
+    app.register_blueprint(admin_bp)
 
     @app.route("/")
     def home():

@@ -1,3 +1,4 @@
+import CommonHeader from "../components/CommonHeader";
 import { useEffect, useState } from "react";
 import API_BASE_URL from "../services/api";
 import "./Recommendations.css";
@@ -64,10 +65,13 @@ function Recommendations() {
 
   if (loading) {
     return (
+      <>
+      <CommonHeader />
       <div className="recommendations-page">
         <h1>🤖 AI Recommendations</h1>
         <p>Generating personalized recommendations...</p>
       </div>
+      </>
     );
   }
 
@@ -81,20 +85,10 @@ function Recommendations() {
   }
 
   return (
+    <>
+    <CommonHeader />
     <div className="recommendations-page">
-      <div className="recommendations-header">
-        <div>
-          <h1>🤖 AI Recommendations</h1>
-          <p>
-            Personalized book recommendations based on your
-            borrowing history.
-          </p>
-        </div>
-
-        <div className="recommendation-count">
-          {recommendations.length} Recommendations
-        </div>
-      </div>
+      
 
       {recommendations.length === 0 ? (
         <div className="no-recommendations">
@@ -142,6 +136,7 @@ function Recommendations() {
         </div>
       )}
     </div>
+    </>
   );
 }
 

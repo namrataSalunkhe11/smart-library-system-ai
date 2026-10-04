@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
@@ -45,6 +46,7 @@ function Login() {
       console.log("Login successful:", data);
 
       alert(`Welcome, ${data.user.first_name}!`);
+
       if (Number(data.user.role_id) === 1) {
         navigate("/admin");
       } else if (Number(data.user.role_id) === 2) {
@@ -54,6 +56,7 @@ function Login() {
       }
     } catch (error) {
       console.error("Login error:", error);
+
       setError(
         "Unable to connect to the server. Please make sure the backend is running."
       );
@@ -112,7 +115,13 @@ function Login() {
         </form>
 
         <p className="login-footer">
-          Don't have an account? <span>Register here</span>
+          Don't have an account?{" "}
+          <span
+            onClick={() => navigate("/register")}
+            style={{ cursor: "pointer" }}
+          >
+            Register here
+          </span>
         </p>
       </div>
     </div>
@@ -120,3 +129,4 @@ function Login() {
 }
 
 export default Login;
+

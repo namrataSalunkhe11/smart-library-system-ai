@@ -1,3 +1,4 @@
+import CommonHeader from "../components/CommonHeader";
 import { useEffect, useState } from "react";
 import API_BASE_URL from "../services/api";
 import "./Books.css";
@@ -133,25 +134,21 @@ function Books() {
 
   if (loading) {
     return (
+      <>
+      <CommonHeader />
       <div className="books-page">
         <h1>📚 Books</h1>
         <p>Loading books...</p>
       </div>
+      </>
     );
   }
 
   return (
+    <>
+    <CommonHeader />
     <div className="books-page">
-      <div className="books-header">
-        <div>
-          <h1>📚 Library Books</h1>
-          <p>Browse books available in the Smart Library.</p>
-        </div>
-
-        <div className="book-count">
-          {books.length} Books
-        </div>
-      </div>
+      
 
       <div className="book-search">
         <input
@@ -230,6 +227,7 @@ function Books() {
         </div>
       )}
     </div>
+    </>
   );
 }
 

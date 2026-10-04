@@ -1,4 +1,4 @@
-
+import CommonHeader from "../components/CommonHeader";
 import { useEffect, useState } from "react";
 import API_BASE_URL from "../services/api";
 import "./Reservations.css";
@@ -88,25 +88,21 @@ function Reservations() {
 
   if (loading) {
     return (
+      <>
+      <CommonHeader />
       <div className="reservations-page">
         <h1>📅 My Reservations</h1>
         <p>Loading reservations...</p>
       </div>
+      </>
     );
   }
 
   return (
+    <>
+    <CommonHeader />
     <div className="reservations-page">
-      <div className="reservations-header">
-        <div>
-          <h1>📅 My Reservations</h1>
-          <p>View and manage your book reservations.</p>
-        </div>
-
-        <div className="reservation-count">
-          {reservations.length} Reservations
-        </div>
-      </div>
+      
 
       {error && <p className="reservations-error">{error}</p>}
 
@@ -195,6 +191,7 @@ function Reservations() {
         </div>
       )}
     </div>
+    </>
   );
 }
 
