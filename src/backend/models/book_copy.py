@@ -36,5 +36,9 @@ class BookCopy(db.Model):
         cascade="all, delete-orphan"
     )
 
+    reservations = db.relationship(
+        "Reservation",
+        back_populates="book_copy"
+    )
     def __repr__(self):
         return f"<BookCopy {self.accession_number}>"

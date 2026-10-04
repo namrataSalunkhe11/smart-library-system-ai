@@ -30,6 +30,12 @@ class Book(db.Model):
     author = db.relationship("Author", back_populates="books")
     category = db.relationship("Category", back_populates="books")
     copies = db.relationship("BookCopy", back_populates="book")
-    
+
+    reservations = db.relationship(
+        "Reservation",
+        back_populates="book",
+        cascade="all, delete-orphan"
+    ) 
+
     def __repr__(self):
         return f"<Book {self.title}>"

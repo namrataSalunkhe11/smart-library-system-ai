@@ -37,5 +37,14 @@ class User(db.Model):
         back_populates="user",
         cascade="all, delete-orphan"
     )
+
+
+    reservations = db.relationship(
+    "Reservation",
+    back_populates="user",
+    cascade="all, delete-orphan"
+    )
+
+
     def __repr__(self):
         return f"<User {self.email}>"

@@ -1,0 +1,129 @@
+.reservations-page {
+  min-height: 100vh;
+  padding: 40px;
+  background: #f5f7fb;
+}
+
+.reservations-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.reservations-header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+.reservations-header p {
+  margin-top: 8px;
+  color: #666;
+}
+
+.reservation-count {
+  padding: 10px 18px;
+  border-radius: 20px;
+  background: #ffffff;
+  font-weight: 600;
+}
+
+.reservations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.reservation-card {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.reservation-icon {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.reservation-card h2 {
+  margin-bottom: 18px;
+  font-size: 22px;
+}
+
+.reservation-card p {
+  margin: 10px 0;
+  color: #555;
+}
+
+.status-active {
+  color: #198754;
+  font-weight: 700;
+}
+
+.status-cancelled {
+  color: #dc3545;
+  font-weight: 700;
+}
+
+.cancel-reservation-btn {
+  width: 100%;
+  margin-top: 18px;
+  padding: 11px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #dc3545;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cancel-reservation-btn:hover {
+  background: #bb2d3b;
+}
+
+.cancel-reservation-btn:disabled {
+  background: #999;
+  cursor: not-allowed;
+}
+
+.no-reservations {
+  background: #ffffff;
+  padding: 50px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.no-reservations h2 {
+  margin-bottom: 10px;
+}
+
+.no-reservations p {
+  color: #666;
+}
+
+.reservations-error {
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  background: #ffe5e5;
+  color: #b02a37;
+}
+
+@media (max-width: 768px) {
+  .reservations-page {
+    padding: 20px;
+  }
+
+  .reservations-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+}

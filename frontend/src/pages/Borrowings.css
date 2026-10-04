@@ -1,0 +1,97 @@
+.borrowings-page {
+  min-height: 100vh;
+  padding: 40px;
+  background: #f5f7fb;
+}
+
+.borrowings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.borrowings-header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+.borrowings-header p {
+  margin-top: 8px;
+  color: #666;
+}
+
+.borrowing-count {
+  padding: 10px 18px;
+  border-radius: 20px;
+  background: #ffffff;
+  font-weight: 600;
+}
+
+.borrowings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.borrowing-card {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.borrowing-icon {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.borrowing-card h2 {
+  margin-bottom: 18px;
+  font-size: 21px;
+}
+
+.borrowing-card p {
+  margin: 8px 0;
+  color: #555;
+}
+
+.borrowing-card strong {
+  color: #222;
+}
+
+.no-borrowings {
+  background: #ffffff;
+  padding: 50px;
+  text-align: center;
+  border-radius: 12px;
+}
+
+.empty-icon {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.no-borrowings h2 {
+  margin-bottom: 8px;
+}
+
+.no-borrowings p {
+  color: #666;
+}
+
+.borrowings-error {
+  color: #c0392b;
+  font-weight: 600;
+}
+.borrowing-status {
+  font-weight: 700;
+}
+
+.borrowing-status.issued {
+  color: #d68910;
+}
+
+.borrowing-status.returned {
+  color: #27ae60;
+}

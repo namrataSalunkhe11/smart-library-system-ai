@@ -1,0 +1,220 @@
+.librarian-page {
+  min-height: 100vh;
+  padding: 40px;
+  background: #f5f7fb;
+}
+
+.librarian-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.librarian-header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+.librarian-header p {
+  margin-top: 8px;
+  color: #666;
+}
+
+.librarian-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.librarian-header-actions button {
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #ffffff;
+}
+
+.librarian-role {
+  padding: 10px 16px;
+  border-radius: 20px;
+  background: #ffffff;
+  font-weight: 600;
+}
+
+.logout-btn {
+  background: #e74c3c !important;
+  color: white;
+}
+
+.librarian-message {
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  background: #eaf8ee;
+  color: #217a3c;
+  font-weight: 600;
+}
+
+.librarian-error {
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  background: #fdecea;
+  color: #c0392b;
+  font-weight: 600;
+}
+
+.librarian-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.librarian-stat {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.librarian-stat h3 {
+  margin: 0;
+  font-size: 30px;
+}
+
+.librarian-stat p {
+  margin: 8px 0 0;
+  color: #666;
+}
+
+.librarian-section {
+  background: #ffffff;
+  padding: 25px;
+  margin-bottom: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.librarian-section h2 {
+  margin-top: 0;
+}
+
+.section-description {
+  color: #666;
+}
+
+.issue-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 18px;
+  align-items: end;
+}
+
+.issue-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.issue-form input,
+.issue-form select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+}
+
+.issue-form button {
+  padding: 11px 20px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  background: #2c3e50;
+  color: white;
+}
+
+.issue-form button:disabled,
+.return-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.librarian-table-wrapper {
+  overflow-x: auto;
+}
+
+.librarian-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.librarian-table th,
+.librarian-table td {
+  padding: 13px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+.librarian-table th {
+  background: #f8f9fa;
+}
+
+.status-available,
+.status-issued {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 15px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status-available {
+  background: #eaf8ee;
+  color: #217a3c;
+}
+
+.status-issued {
+  background: #fdecea;
+  color: #c0392b;
+}
+
+.return-btn {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #3498db;
+  color: white;
+}
+
+.empty-librarian {
+  padding: 30px;
+  text-align: center;
+  color: #666;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+@media (max-width: 800px) {
+  .librarian-page {
+    padding: 20px;
+  }
+
+  .librarian-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .librarian-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .issue-form {
+    grid-template-columns: 1fr;
+  }
+}

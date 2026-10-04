@@ -1,7 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
+import API_BASE_URL from "../services/api";
 
 function Login() {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -15,7 +19,7 @@ function Login() {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:5000/api/auth/login",
+        `${API_BASE_URL}/auth/login`,
         {
           method: "POST",
           headers: {
@@ -41,6 +45,13 @@ function Login() {
       console.log("Login successful:", data);
 
       alert(`Welcome, ${data.user.first_name}!`);
+      if (Number(data.user.role_id) === 1) {
+        navigate("/admin");
+      } else if (Number(data.user.role_id) === 2) {
+        navigate("/librarian");
+      } else {
+        navigate("/dashboard");
+      }
     } catch (error) {
       console.error("Login error:", error);
       setError(

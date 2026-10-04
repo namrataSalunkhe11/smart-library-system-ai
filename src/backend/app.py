@@ -5,7 +5,17 @@ from config import Config
 from database import db, migrate
 
 # Import models so Flask-Migrate can detect them
-from models import Role, User, Author, Category,Book,BookCopy
+from models import (
+    Role,
+    User,
+    Author,
+    Category,
+    Book,
+    BookCopy,
+    IssueTransaction,
+    Reservation
+)
+
 # Import Blueprints
 from routes.auth_routes import auth_bp
 from routes.book_routes import book_bp
@@ -15,6 +25,7 @@ from flask_jwt_extended import JWTManager
 from routes.recommendation_routes import recommendation_bp
 from routes.category_routes import category_bp
 from routes.author_routes import author_bp
+from routes.reservation_routes import reservation_bp
 
 
 def create_app():
@@ -28,7 +39,7 @@ def create_app():
 
     # Initialize extensions
     db.init_app(app)
-    migrate.init_app(app, db)
+    migrate.init_app(app, db, directory="src/backend/migrations")
 
     jwt = JWTManager(app)
 
@@ -40,7 +51,7 @@ def create_app():
     app.register_blueprint(recommendation_bp)
     app.register_blueprint(category_bp)
     app.register_blueprint(author_bp)
-    
+    app.register_blueprint(reservation_bp)
 
     @app.route("/")
     def home():

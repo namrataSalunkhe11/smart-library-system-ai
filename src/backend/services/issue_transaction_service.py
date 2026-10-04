@@ -137,3 +137,43 @@ def pay_fine(transaction_id):
         "message": "Fine paid successfully.",
         "fine_amount": float(transaction.fine_amount)
     }, 200
+
+def get_my_borrowings(user_id):
+    """
+    Get borrowing history for a specific user.
+    """
+
+    transactions = IssueTransaction.query.filter_by(
+        user_id=user_id
+    ).order_by(
+        IssueTransaction.issue_date.desc()
+    ).all()
+
+    borrowing_list = []
+
+    for transaction in transactions:
+        book = transaction.book_copy.book
+
+        borrowing_list.append({
+            "transaction_id": transaction.transaction_id,
+            "book_id": book.book_id,
+            "title": book.title,
+            "author": book.author.author_name,
+            "category": book.category.category_name,
+            "copy_id": transaction.copy_id,
+            "issue_date": transaction.issue_date.strftime("%Y-%m-%d"),
+            "due_date": transaction.due_date.strftime("%Y-%m-%d"),
+            "return_date": (
+                transaction.return_date.strftime("%Y-%m-%d")
+                if transaction.return_date
+                else None
+            ),
+            "status": transaction.status,
+            "fine_amount": float(transaction.fine_amount or 0),
+            "fine_paid": transaction.fine_paid
+        })
+
+    return {
+        "success": True,
+        "borrowings": borrowing_list
+    }, 200

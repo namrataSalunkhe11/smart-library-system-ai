@@ -5,7 +5,8 @@ from constants.roles import ADMIN, LIBRARIAN
 from services.issue_transaction_service import (
     issue_book,
     return_book,
-    pay_fine
+    pay_fine,
+    get_my_borrowings
 )
 issue_transaction_bp = Blueprint(
     "issue_transactions",
@@ -13,6 +14,21 @@ issue_transaction_bp = Blueprint(
     url_prefix="/api/issues"
 )
 
+@issue_transaction_bp.route("/my-borrowings", methods=["GET"])
+@jwt_required()
+def my_borrowings():
+
+    user_id = get_jwt().get("sub")
+
+    if not user_id:
+        return jsonify({
+            "success": False,
+            "message": "User identity not found in token."
+        }), 401
+
+    response, status_code = get_my_borrowings(int(user_id))
+
+    return jsonify(response), status_code
 
 @issue_transaction_bp.route("", methods=["POST"])
 @jwt_required()
@@ -51,6 +67,7 @@ def issue():
     return jsonify(response), status_code
 
 @issue_transaction_bp.route("/return/<int:copy_id>", methods=["PUT"])
+@jwt_required()
 def return_book_copy(copy_id):
 
     response, status_code = return_book(copy_id)
@@ -58,6 +75,7 @@ def return_book_copy(copy_id):
     return jsonify(response), status_code
 
 @issue_transaction_bp.route("/pay-fine/<int:transaction_id>", methods=["PUT"])
+@jwt_required()
 def pay_transaction_fine(transaction_id):
 
     response, status_code = pay_fine(transaction_id)
